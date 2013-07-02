@@ -2,4 +2,4 @@
 *.swo
 *.pyc
 *~
-/nbproject/private/
+/nbproject
