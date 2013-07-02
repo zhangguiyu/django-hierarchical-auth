@@ -19,5 +19,5 @@ Updates
 0.3
 ---
 
-Now working with django 1.5 and 1.6, including custom models.
-Updated for MPTT>1.5.
+ * Now working with django 1.5 and 1.6, *including custom user models*!
+ * Updated for MPTT>1.5.
