@@ -13,7 +13,7 @@ except:
     from django.contrib.auth.models import User
     
 try:
-    module_name, class_name = settings.AUTH_USER_ADMIN_MODEL.rsplit('.', 1)
+    module_name, class_name = settings.AUTH_USER_ADMIN_CLASS.rsplit('.', 1)
     mod = __import__(module_name, fromlist=[class_name])
     UserAdmin = getattr(mod, class_name)    
 except:
