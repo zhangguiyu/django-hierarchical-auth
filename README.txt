@@ -12,3 +12,12 @@ Usage
 =====
 
 As it's built on top of django.contrib.auth all you need to do is install it.
+
+Updates
+=======
+
+0.3
+---
+
+Now working with django 1.5 and 1.6, including custom models.
+Updated for MPTT>1.5.

@@ -2,9 +2,11 @@ from distutils.core import setup
 
 setup(
     name='django-hierarchical-auth',
-    version='0.3.dev',
-    author='Ivan Raskovsky (rasca), Stefano Crosta (scrosta)',
-    author_email='raskovsky@gmail.com',
+    version='0.3',
+    author='Stefano Crosta (scrosta)',
+    original_author='Ivan Raskovsky (rasca)',
+    author_email='stefano@digitalemagine.com',
+    original_author_email='raskovsky@gmail.com',
     packages=['hierarchical_auth',],
     # license='Creative Commons Attribution-Noncommercial-Share Alike license',
     description='Extends django auth allowing hierarchical permissions',
