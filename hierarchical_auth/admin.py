@@ -1,17 +1,20 @@
 from django.contrib import admin
 from django.conf import settings
+from django.db.models import get_model
 
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.forms import UserChangeForm
 
-try:
-    User = settings.AUTH_USER_MODEL
+try:    
+    app_label, model_name = settings.AUTH_USER_MODEL.split('.')    
+    User = get_model(app_label, model_name)        
 except:
     from django.contrib.auth.models import User
     
 try:
-    UserAdmin = settings.AUTH_USER_ADMIN_MODEL
+    app_label, model_name = settings.AUTH_USER_ADMIN_MODEL.split('.')    
+    UserAdmin = get_model(app_label, model_name)
 except:
     from django.contrib.auth.admin import UserAdmin
 
