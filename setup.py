@@ -10,5 +10,5 @@ setup(
     packages=['hierarchical_auth',],
     # license='Creative Commons Attribution-Noncommercial-Share Alike license',
     description='Extends django auth allowing hierarchical permissions',
-    long_description=open('README.txt').read(),
+    long_description=open('README.rst').read(),
 )
