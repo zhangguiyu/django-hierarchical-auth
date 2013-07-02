@@ -6,16 +6,16 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.forms import UserChangeForm
 
-try:    
+try:
     from django.contrib.auth import get_user_model
     User = get_user_model()
 except:
     from django.contrib.auth.models import User
-    
+
 try:
     module_name, class_name = settings.AUTH_USER_ADMIN_CLASS.rsplit('.', 1)
     mod = __import__(module_name, fromlist=[class_name])
-    UserAdmin = getattr(mod, class_name)    
+    UserAdmin = getattr(mod, class_name)
 except:
     from django.contrib.auth.admin import UserAdmin
 
@@ -34,7 +34,7 @@ admin.site.unregister(Group)
 admin.site.register(Group, GroupMPTTModelAdmin)
 
 class UserWithMPTTChangeForm(UserChangeForm):
-    groups = TreeNodeMultipleChoiceField(queryset=Group.tree.all())
+    groups = TreeNodeMultipleChoiceField(queryset=Group.objects.all())
 
 class UserWithMPTTAdmin(UserAdmin):
     form = UserWithMPTTChangeForm
