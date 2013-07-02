@@ -4,7 +4,6 @@ from django.db.models import get_model
 
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import GroupAdmin
-from django.contrib.auth.forms import UserChangeForm
 
 try:
     from django.contrib.auth import get_user_model
@@ -18,6 +17,8 @@ try:
     UserAdmin = getattr(mod, class_name)
 except:
     from django.contrib.auth.admin import UserAdmin
+
+UserChangeForm = UserAdmin.form
 
 from mptt.forms import TreeNodeMultipleChoiceField
 
