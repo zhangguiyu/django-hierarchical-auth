@@ -1,9 +1,19 @@
 from django.contrib import admin
 from django.conf import settings
 
-from django.contrib.auth.models import Group, User
-from django.contrib.auth.admin import GroupAdmin, UserAdmin
+from django.contrib.auth.models import Group
+from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.forms import UserChangeForm
+
+try:
+    User = settings.AUTH_USER_MODEL
+except:
+    from django.contrib.auth.models import User
+    
+try:
+    UserAdmin = settings.AUTH_USER_ADMIN_MODEL
+except:
+    from django.contrib.auth.admin import UserAdmin
 
 from mptt.forms import TreeNodeMultipleChoiceField
 
