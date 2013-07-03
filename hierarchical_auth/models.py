@@ -1,5 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import Group, User
+
+from django.contrib.auth.models import Group
+
+try:
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+except:
+    from django.contrib.auth.models import User
+
 from django.utils.translation import ugettext_lazy as _
 
 from mptt.models import MPTTModelBase
@@ -26,7 +34,15 @@ def get_all_groups(self, only_ids=False):
     """
     direct_groups = self.groups.all()
     groups = set()
-
+    # which direction should we really use the graph?
+    for group in direct_groups:
+        ancestors = group.get_ancestors(include_self=True).all()
+        for ancestor in ancestors:
+            if only_ids:
+                groups.add(ancestor.id)
+            else:
+                groups.add(ancestor)
+    return groups
     for group in direct_groups:
         descendants = group.get_descendants(include_self=True).all()
         for descendant in descendants:
